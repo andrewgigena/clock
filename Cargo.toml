@@ -1,0 +1,12 @@
+[package]
+name = "clock"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+chrono = "0.4.38"
+leptos = { version = "0.6.12", features = ["csr"] }
+leptos-use = "0.10.10"
+
+[package.metadata]
+assets = ["tick.mp3"]
