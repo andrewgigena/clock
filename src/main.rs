@@ -7,7 +7,7 @@ use leptos_use::utils::Pausable;
 
 #[component]
 fn App() -> impl IntoView {
-    let (icon, set_icon) = use_favicon();
+    let (_icon, set_icon) = use_favicon();
     set_icon.set(Some("favicon.ico".to_string())); // change current icon
 
     let (date_time, set_date_time) =
@@ -44,12 +44,16 @@ fn App() -> impl IntoView {
                     class="bg-gray-500 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded font-mono h-12 w-12"
 
                     on:click=move |_| {
-                        let audio = document().get_element_by_id("audioPlayer").unwrap().dyn_into::<HtmlAudioElement>().unwrap();
+                        let audio = document()
+                            .get_element_by_id("audioPlayer")
+                            .unwrap()
+                            .dyn_into::<HtmlAudioElement>()
+                            .unwrap();
                         if is_playing.get() {
-                            audio.pause();
+                            let _ = audio.pause();
                             set_is_playing.set(false);
                         } else {
-                            audio.play();
+                            let _ = audio.play();
                             set_is_playing.set(true);
                         }
                     }
